@@ -42,6 +42,8 @@ module.exports.Login = async (req, res, next) => {
     res.cookie("token", token, {
       withCredentials: true,
       httpOnly: false,
+      origin: "https://real-time-chat-api-b8kz.onrender.com",
+
     });
     res
       .status(201)
