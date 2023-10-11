@@ -11,7 +11,6 @@ async function addPost(req, res, next) {
     return res.json({ message: "Input empty or need to re-login" });
   }
   const createdPost = await Post.create({ text, postedBy });
-  console.log("Adding post");
   res.status(201).json({ message: "created post" + createdPost });
 }
 

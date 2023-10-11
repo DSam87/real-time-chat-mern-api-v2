@@ -18,8 +18,8 @@ mongoose
   .then(() => console.log("MongoDB is  connected successfully"))
   .catch((err) => console.error(err));
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+app.listen(3500, () => {
+  console.log(`Server is listening on port ${3500}`);
 });
 
 app.use(cors(corsOptions));
