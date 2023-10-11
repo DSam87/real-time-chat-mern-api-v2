@@ -5,22 +5,24 @@ const app = express();
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const authRoute = require("./Routes/AuthRoute");
-const { MONGO_URL, PORT } = process.env;
+const { MONGO_URL} = process.env;
 const postRoute = require("./Routes/PostRoute");
 const userRoute = require("./Routes/UserRoute");
 const { corsOptions } = require("./config/corsOptions");
+const PORT = process.env.PORT || 3500
 
 mongoose
   .connect(MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("MongoDB is  connected successfully"))
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`);
+    });
+  })
   .catch((err) => console.error(err));
 
-app.listen(3500, () => {
-  console.log(`Server is listening on port ${3500}`);
-});
 
 app.use(cors(corsOptions));
 app.use(cookieParser());

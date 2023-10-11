@@ -1,3 +1,6 @@
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = [
+  "https://real-time-chat-sfg3.onrender.com", 
+  "https://real-time-chat-sfg3.onrender.com/"
+];
 
 module.exports = { allowedOrigins };
