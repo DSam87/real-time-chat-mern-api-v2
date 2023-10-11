@@ -7,10 +7,20 @@ async function getAllPosts(req, res, next) {
 
 async function addPost(req, res, next) {
   const { text, postedBy } = req.body;
-  if (!text || !postedBy) {
+
+  let username;
+  
+  if(postedBy){
+     username = postedBy;
+  }else{
+     username = "Anon";
+
+  }
+
+  if (!text) {
     return res.json({ message: "Input empty or need to re-login" });
   }
-  const createdPost = await Post.create({ text, postedBy });
+  const createdPost = await Post.create({ text, postedBy: username });
   res.status(201).json({ message: "created post" + createdPost });
 }
 
